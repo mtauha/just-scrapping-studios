@@ -1,66 +1,176 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Just Scrapping Studios Web Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Laravel based web application for Just Scrapping Studios, allowing users to enroll in courses, training sessions, and competitions, as well as book various services. The application includes user authentication, admin management, and a dynamic user interface.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Project Setup
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Prerequisites
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **PHP >= 7.3**
+* **Composer**
+* **Node.js & npm**
+* **MySQL**
 
-## Learning Laravel
+### Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+   cd <repository_directory>
+   ```
+2. Install dependencies:
+   ```bash
+   composer install
+   npm install
+   ```
+3. Copy the `.env.example` file to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+4. Generate an application key:
+   ```bash
+   php artisan key:generate
+   ```
+5. Configure the `.env` file:
+   * Update database credentials and other necessary settings.
+6. Run migrations:
+   ```bash
+   php artisan migrate
+   ```
+7. Seed the database (optional):
+   ```bash
+   php artisan db:seed
+   ```
+9. Compile assets:
+   ```bash
+   npm run dev
+   ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Run the Development Server
 
-## Laravel Sponsors
+1. Preferred method:
+   ```bash
+   php artisan serve
+   ```
+2. Alternate method (if the above doesn’t work):
+   ```bash
+   cd ../just-scrapping-studios/public
+   php -S 127.0.0.1:80
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Project Description
 
-## Contributing
+### Flow of the Project
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+The application enables users to:
 
-## Code of Conduct
+* Enroll in courses, training sessions, and competitions.
+* Book services.
+* Access dynamic user and admin management features.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## Detailed Description
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Migrations
 
-## License
+Migrations create and manage the database schema. Key migrations include:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* `create_users_table`: Users table.
+* `create_courses_table`: Courses table.
+* `create_trainings_table`: Trainings table.
+* `create_competitions_table`: Competitions table.
+* `create_bookings_table`: Bookings table.
+* `create_enrollments_table`: Enrollments table.
+* `create_general_requests_table`: General requests table.
+
+### Models
+
+Models define data and business logic:
+
+* `User`: Represents a user.
+* `Course`: Represents a course.
+* `Training`: Represents a training session.
+* `Competition`: Represents a competition.
+* `Booking`: Represents a booking.
+* `Enrollment`: Represents an enrollment.
+* `GeneralRequest`: Represents a general request.
+
+### Controllers
+
+Controllers manage request logic:
+
+* `AuthController`: User authentication.
+* `CourseController`: Courses management.
+* `TrainingController`: Trainings management.
+* `CompetitionController`: Competitions management.
+* `BookingController`: Bookings management.
+* `EnrollmentController`: Enrollments management.
+* `GeneralRequestController`: General requests management.
+
+### Routes
+
+Application endpoints are defined in:
+
+* **`web.php`** : Main routes file.
+* Authentication routes: `Auth::routes()`.
+* Resource routes: Courses, trainings, competitions, bookings, enrollments, and general requests.
+
+### Views
+
+HTML templates for rendering pages:
+
+* `layouts/app.blade.php`: Main layout.
+* `home.blade.php`: Home page.
+* `courses/index.blade.php`: List of courses.
+* `trainings/index.blade.php`: List of training sessions.
+* `competitions/index.blade.php`: List of competitions.
+* `bookings/index.blade.php`: List of bookings.
+* `enrollments/index.blade.php`: User enrollments and bookings.
+* `admin/general_requests.blade.php`: Admin general requests.
+
+---
+
+## Course Learning Outcomes (CLOs) Fulfilled
+
+### **CLO 3** : Build Static and Dynamic Websites and Applications
+
+* Implements dynamic features like user authentication and service management.
+* JavaScript enhances interactivity (DOM manipulation, dynamic styling, form validation).
+
+### **CLO 4** : Produce Solutions Using Web-Oriented Programming Constructs
+
+* Solves programming challenges with JavaScript for dynamic content and user interface improvements.
+* Examples include form validation and dynamic content loading.
+
+### **CLO 5** : Perform Effectively as a Member of a Team
+
+* Team collaboration for design, coding, and testing.
+* Clear communication and task division ensured effective teamwork.
+
+---
+
+Enjoy building with  **Just Scrapping Studios Web Application** ! 🚀
+
+Here's the updated **Run the development server** section:
+
+---
+
+### Run the Development Server
+
+1. Preferred method:
+   ```bash
+   php artisan serve
+   ```
+2. Alternate method (if the above doesn’t work):
+   ```bash
+   cd ../just-scrapping-studios/public
+   php -S 127.0.0.1:80
+   ```
