@@ -1,6 +1,6 @@
 # Just Scrapping Studios Web Application
 
-Laravel based web application for Just Scrapping Studios, allowing users to enroll in courses, training sessions, and competitions, as well as book various services. The application includes user authentication, admin management, and a dynamic user interface.
+A comprehensive web application for managing courses, trainings, competitions, bookings, and general requests. This application supports both user and admin roles, featuring authentication, dashboards, and dynamic interactions.
 
 ---
 
@@ -16,64 +16,115 @@ Laravel based web application for Just Scrapping Studios, allowing users to enro
 ### Installation
 
 1. Clone the repository:
+
    ```bash
-   git clone <repository_url>
-   cd <repository_directory>
+   git clone https://github.com/mtauha/just-scrapping-studios
+   cd just-scrapping-studios
    ```
 2. Install dependencies:
+
    ```bash
    composer install
    npm install
    ```
 3. Copy the `.env.example` file to `.env`:
+
    ```bash
    cp .env.example .env
    ```
 4. Generate an application key:
+
    ```bash
    php artisan key:generate
    ```
 5. Configure the `.env` file:
-   * Update database credentials and other necessary settings.
+
+   * Update database credentials and other settings.
 6. Run migrations:
+
    ```bash
    php artisan migrate
    ```
-7. Seed the database (optional):
+7. Seed the database:
+
    ```bash
    php artisan db:seed
    ```
+8. Run the development server:
+
+   ```bash
+   php artisan serve
+   ```
+
+   * **Alternate method** :
+
+   ```bash
+   cd ../just-scrapping-studios/public
+   php -S 127.0.0.1:80
+   ```
 9. Compile assets:
+
    ```bash
    npm run dev
    ```
 
 ---
 
-### Run the Development Server
+## First Login Information
 
-1. Preferred method:
-   ```bash
-   php artisan serve
-   ```
-2. Alternate method (if the above doesn’t work):
-   ```bash
-   cd ../just-scrapping-studios/public
-   php -S 127.0.0.1:80
-   ```
+### Admin User
 
+* **Email** : `admin@example.com`
+* **Password** : `password`
+
+### Regular User
+
+* **Email** : `user@example.com`
+* **Password** : `password`
+
+> **Note** : Change default passwords after the first login for security.
 
 ---
 
-## Project Description
+## Flow of the Project
 
-### Flow of the Project
+### User Registration and Authentication
 
-The application enables users to:
+* Users can register and log in.
+* Admins have a special role for application management.
 
-* Enroll in courses, training sessions, and competitions.
-* Book services.
-* Access dynamic user and admin management features.
+### Dashboard
+
+* Users see options like Courses, Trainings, Competitions, Bookings, and General Requests.
+
+### Courses
+
+* Users can view, enroll, and manage courses.
+* Admins can add, edit, and delete courses.
+
+### Trainings
+
+* Users can view, enroll, and manage training sessions.
+* Admins can add, edit, and delete training sessions.
+
+### Competitions
+
+* Users can view, enroll, and manage competitions.
+* Admins can add, edit, and delete competitions.
+
+### Bookings
+
+* Users can book services like Coffee and Relaxation Area or Kids Play Area.
+* Admins can view and manage all bookings.
+
+### General Requests
+
+* Users submit requests for courses, trainings, competitions, or bookings.
+* Admins can approve or reject these requests.
+
+### Enrollments
+
+* Users view their enrollments and bookings, including details like course name, type, date, and duration.
 
 ---
 
@@ -81,7 +132,7 @@ The application enables users to:
 
 ### Migrations
 
-Migrations create and manage the database schema. Key migrations include:
+Key migrations include:
 
 * `create_users_table`: Users table.
 * `create_courses_table`: Courses table.
@@ -90,87 +141,95 @@ Migrations create and manage the database schema. Key migrations include:
 * `create_bookings_table`: Bookings table.
 * `create_enrollments_table`: Enrollments table.
 * `create_general_requests_table`: General requests table.
+* `add_duration_to_general_requests_table`: Adds the `duration` column to general requests.
+* `add_enrollment_type_to_enrollments_table`: Adds the `enrollment_type` column to enrollments.
 
 ### Models
 
-Models define data and business logic:
+Key models include:
 
-* `User`: Represents a user.
-* `Course`: Represents a course.
-* `Training`: Represents a training session.
-* `Competition`: Represents a competition.
-* `Booking`: Represents a booking.
-* `Enrollment`: Represents an enrollment.
-* `GeneralRequest`: Represents a general request.
+* `User`: Represents users.
+* `Course`: Represents courses.
+* `Training`: Represents training sessions.
+* `Competition`: Represents competitions.
+* `Booking`: Represents bookings.
+* `Enrollment`: Represents enrollments.
+* `GeneralRequest`: Represents general requests.
 
 ### Controllers
 
-Controllers manage request logic:
+Key controllers include:
 
-* `AuthController`: User authentication.
-* `CourseController`: Courses management.
-* `TrainingController`: Trainings management.
-* `CompetitionController`: Competitions management.
-* `BookingController`: Bookings management.
-* `EnrollmentController`: Enrollments management.
-* `GeneralRequestController`: General requests management.
+* `AuthController`: Handles authentication.
+* `CourseController`: Manages courses.
+* `TrainingController`: Manages trainings.
+* `CompetitionController`: Manages competitions.
+* `BookingController`: Manages bookings.
+* `EnrollmentController`: Manages enrollments.
+* `GeneralRequestController`: Manages general requests.
 
 ### Routes
 
-Application endpoints are defined in:
-
-* **`web.php`** : Main routes file.
-* Authentication routes: `Auth::routes()`.
-* Resource routes: Courses, trainings, competitions, bookings, enrollments, and general requests.
+* Defined in `web.php`.
+* Includes `Auth::routes()` for authentication.
+* Resource routes for courses, trainings, competitions, bookings, enrollments, and general requests.
 
 ### Views
 
-HTML templates for rendering pages:
+Key views include:
 
 * `layouts/app.blade.php`: Main layout.
 * `home.blade.php`: Home page.
-* `courses/index.blade.php`: List of courses.
-* `trainings/index.blade.php`: List of training sessions.
-* `competitions/index.blade.php`: List of competitions.
-* `bookings/index.blade.php`: List of bookings.
+* `courses/index.blade.php`: Courses list.
+* `trainings/index.blade.php`: Trainings list.
+* `competitions/index.blade.php`: Competitions list.
+* `bookings/index.blade.php`: Bookings list.
 * `enrollments/index.blade.php`: User enrollments and bookings.
-* `admin/general_requests.blade.php`: Admin general requests.
+* `admin/general_requests.blade.php`: Admin view for general requests.
 
 ---
 
-## Course Learning Outcomes (CLOs) Fulfilled
+## Course Learning Outcomes (CLOs)
 
 ### **CLO 3** : Build Static and Dynamic Websites and Applications
 
-* Implements dynamic features like user authentication and service management.
-* JavaScript enhances interactivity (DOM manipulation, dynamic styling, form validation).
+* Dynamic features like user authentication, enrollments, and bookings.
+* JavaScript for DOM manipulation, dynamic styling, and form validation.
 
 ### **CLO 4** : Produce Solutions Using Web-Oriented Programming Constructs
 
-* Solves programming challenges with JavaScript for dynamic content and user interface improvements.
-* Examples include form validation and dynamic content loading.
+* Solves challenges with JavaScript for dynamic content and user inputs.
+* Examples: Form validation, dynamic content loading.
 
 ### **CLO 5** : Perform Effectively as a Member of a Team
 
-* Team collaboration for design, coding, and testing.
-* Clear communication and task division ensured effective teamwork.
+* Collaborative design, coding, and testing.
+* Clear communication and task division ensured smooth teamwork.
 
 ---
 
-Enjoy building with  **Just Scrapping Studios Web Application** ! 🚀
+## Example Flow
 
-Here's the updated **Run the development server** section:
+1. **User Registration** :
 
----
+* New users register and their data is stored in the `users` table.
 
-### Run the Development Server
+1. **User Login** :
 
-1. Preferred method:
-   ```bash
-   php artisan serve
-   ```
-2. Alternate method (if the above doesn’t work):
-   ```bash
-   cd ../just-scrapping-studios/public
-   php -S 127.0.0.1:80
-   ```
+* Users log in and are redirected to the dashboard.
+
+1. **Viewing Courses** :
+
+* The `CourseController` fetches courses and passes them to `courses/index.blade.php`.
+
+1. **Enrolling in a Course** :
+
+* Enrollment data is stored in the `enrollments` table with `enrollment_type` set to course.
+
+1. **Submitting a General Request** :
+
+* Request data is stored in the `general_requests` table.
+
+1. **Admin Approving a Request** :
+
+* Approved data moves from the `general_requests` table to the `enrollments` table.
