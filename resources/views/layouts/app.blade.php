@@ -53,7 +53,7 @@
     <!-- Bootstrap JS and dependencies -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-<footer>
-    <p>&copy; 2023 Scrapbooking. All rights reserved.</p>
-</footer>
+
+<!-- Include Footer -->
+@include('layouts.footer')
 </html>
